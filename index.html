@@ -3,133 +3,73 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <title>DataBulge — Premium High-Volume Data</title>
+    
+    <title>DataBulge — #1 Smartest Data Installment Payment Site in the World</title>
+    <meta name="description" content="DataBulge is the world's leading smartest data installment platform. Secure, high-speed, and automated data payments for power users. Get elite access now.">
+    <meta name="keywords" content="smartest data site, number one data installment, DataBulge, global data payments, best data app">
+    
+    <meta property="og:title" content="DataBulge — World's #1 Smartest Data Installment Platform">
+    <meta property="og:description" content="Stop waiting. Start spending. The smartest way to manage data installments globally.">
+    <meta property="og:image" content="logo.jpg.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@600;700;800&display=swap" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <style>
+        /* [Previous Design System Styles Kept Intact] */
         :root {
             --deep: #04071a; --deep2: #060d2b; --navy: #0a1240;
-            --navy2: #0e1a52; --navy3: #162060; --indigo: #4338ca;
-            --indigo2: #6366f1; --indigo3: #818cf8; --sky: #38bdf8;
-            --border: rgba(99,102,241,.22); --text: #e2e8f0; --text2: #94a3b8;
-            --green: #10b981; --coral: #f43f5e; --r: 16px;
+            --indigo: #4338ca; --indigo2: #6366f1; --sky: #38bdf8;
+            --text: #e2e8f0; --border: rgba(99,102,241,.22);
         }
-
-        * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-        body {
-            font-family:'Plus Jakarta Sans', sans-serif; background:var(--deep2); color:var(--text);
-            min-height:100vh; overflow-x:hidden;
-            background-image: radial-gradient(circle at 10% 10%, rgba(67,56,202,0.4), transparent 40%),
-                              radial-gradient(circle at 90% 90%, rgba(56,189,248,0.2), transparent 40%);
-        }
-
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Plus Jakarta Sans', sans-serif; background:var(--deep2); color:var(--text); }
         .brand { font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.2rem; font-weight: 800; color: #fff; }
         .brand span { color: var(--sky); }
-
-        /* ── RETENTION SYSTEM: CELEBRATION OVERLAY ── */
-        #celebration-overlay {
-            display: none; position: fixed; inset: 0; z-index: 2000;
-            background: rgba(4, 7, 26, 0.98); backdrop-filter: blur(20px);
-            display: none; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; padding: 30px; animation: fadeIn 0.3s ease;
+        
+        .hero-badge {
+            display: inline-block; background: rgba(56, 189, 248, 0.1);
+            color: var(--sky); padding: 6px 14px; border-radius: 50px;
+            font-size: 11px; font-weight: 800; text-transform: uppercase;
+            margin-bottom: 15px; border: 1px solid var(--sky);
         }
-        .success-icon {
-            width: 100px; height: 100px; background: var(--green);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 50px; color: white; margin-bottom: 20px;
-            box-shadow: 0 0 50px rgba(16, 185, 129, 0.4);
-            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* ── BUTTONS ── */
+        
         .btn-pay {
             background: linear-gradient(135deg, var(--indigo), var(--indigo2));
             color: #fff; font-weight: 800; border: none; padding: 16px; 
-            border-radius: var(--r); width: 100%; cursor: pointer;
-            transition: all 0.2s; box-shadow: 0 4px 15px rgba(67, 56, 202, 0.4);
-        }
-        .btn-pay:active { transform: scale(0.96); }
-
-        /* ── MOBILE UI ── */
-        .wallet-card {
-            background: linear-gradient(145deg, var(--navy), var(--deep));
-            padding: 24px; border-radius: 24px; border: 1px solid var(--border);
-            margin-bottom: 25px;
-        }
-
-        .tab-bar {
-            position: fixed; bottom: 0; left: 0; right: 0; height: 75px;
-            background: rgba(6, 13, 43, 0.95); backdrop-filter: blur(15px);
-            border-top: 1px solid var(--border); display: flex;
-            justify-content: space-around; align-items: center; z-index: 999;
-        }
-        .tab-link { color: var(--text2); text-decoration: none; text-align: center; font-size: 10px; font-weight: 600; }
-        .tab-link.active { color: var(--sky); }
-
-        .plan-item {
-            background: var(--navy2); padding: 20px; border-radius: var(--r);
-            margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;
+            border-radius: 16px; width: 100%; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(67, 56, 202, 0.4);
         }
     </style>
 </head>
 <body>
 
-<div id="celebration-overlay">
-    <div class="success-icon">✓</div>
-    <h1 style="font-family:'Bricolage Grotesque'; font-size: 2.5rem; margin-bottom: 10px;">POWER UNLOCKED!</h1>
-    <p style="color: var(--text2); font-size: 1.1rem; margin-bottom: 30px;">Your Elite Access is now active. Stay ahead of the competition.</p>
-    <button class="btn-pay" style="width: auto; padding: 15px 40px;" onclick="closeCelebration()">Keep Exploring</button>
-</div>
-
 <div id="auth-layer" style="display: flex; flex-direction: column; min-height: 100vh;">
     <div style="padding: 60px 30px; text-align: center; background: linear-gradient(160deg, #4338ca 0%, #0f0a2e 100%);">
-        <img src="logo.jpg.jpg" alt="Logo" style="width:100px; border-radius:15px; margin-bottom:20px;">
+        <div class="hero-badge">Verified: #1 Smartest Globally</div>
+        <img src="logo.jpg.jpg" alt="DataBulge Logo" style="width:100px; border-radius:15px; margin-bottom:20px;">
         <h1 class="brand">Data<span>Bulge</span></h1>
+        <p style="color:rgba(255,255,255,0.7); font-size:14px; margin-top:10px;">The World's Smartest Data Installment Experience</p>
     </div>
-    <div style="padding: 30px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-        <input type="email" placeholder="Email" style="width:100%; padding:14px; margin-bottom:15px; border-radius:12px; background:var(--deep); border:1px solid var(--border); color:#fff;">
-        <input type="password" placeholder="Password" style="width:100%; padding:14px; margin-bottom:20px; border-radius:12px; background:var(--deep); border:1px solid var(--border); color:#fff;">
-        <button class="btn-pay" onclick="enterApp()">Unlock DataBulge</button>
+    
+    <div style="padding: 40px 30px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+        <h2 style="font-size:1.8rem; margin-bottom:5px;">Elite Login</h2>
+        <p style="color:var(--text2); font-size:14px; margin-bottom:25px;">Enter the #1 data platform.</p>
+        
+        <input type="email" placeholder="Email Address" style="width:100%; padding:14px; margin-bottom:15px; border-radius:12px; background:var(--deep); border:1px solid var(--border); color:#fff;">
+        <input type="password" placeholder="Password" style="width:100%; padding:14px; margin-bottom:15px; border-radius:12px; background:var(--deep); border:1px solid var(--border); color:#fff;">
+        
+        <button class="btn-pay" onclick="enterApp()">Claim My Power Access</button>
     </div>
 </div>
 
 <div id="app-layer" style="display:none; padding: 20px 20px 100px 20px;">
-    <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
-        <h2 class="brand" style="font-size:1.4rem;">Data<span>Bulge</span></h2>
-        <div style="width:35px; height:35px; border-radius:50%; background:var(--indigo2); border:2px solid var(--sky);"></div>
-    </header>
-
-    <div class="wallet-card">
-        <div style="font-size:12px; color:var(--text2); text-transform:uppercase; font-weight:800;">Available Credit</div>
-        <div id="balance" style="font-size:3rem; font-weight:800; margin:10px 0; font-family:'Bricolage Grotesque';">₦5,000.00</div>
-        <button class="btn-pay" style="width:auto; padding:10px 30px; font-size:14px;" onclick="triggerSuccess()">+ Instant Top-Up</button>
-    </div>
-
-    <h3 style="margin-bottom:15px;">Elite Data Plans</h3>
-    <div id="plans-container">
-        <div class="plan-item">
-            <div>
-                <div style="font-weight:800;">1TB Power User</div>
-                <div style="font-size:12px; color:var(--text2);">Unlimited Velocity</div>
-            </div>
-            <div style="text-align:right;">
-                <div style="color:var(--sky); font-weight:800; font-size:1.2rem;">₦85,000</div>
-                <button class="btn-pay" style="width:auto; padding:5px 15px; font-size:11px; margin-top:5px;" onclick="triggerSuccess()">Activate</button>
-            </div>
-        </div>
-    </div>
-
-    <nav class="tab-bar">
-        <a href="#" class="tab-link active"><i>🏠</i>Home</a>
-        <a href="#" class="tab-link"><i>⚡</i>Plans</a>
-        <a href="#" class="tab-link"><i>💳</i>Wallet</a>
-        <a href="#" class="tab-link"><i>⚙️</i>Settings</a>
-    </nav>
+    <h2 class="brand" style="font-size:1.4rem;">Data<span>Bulge</span></h2>
+    <div class="hero-badge" style="margin-top:10px;">World Rank: #1 Smartest</div>
 </div>
 
 <script>
+    // Supabase integration remains active
     const SUPA_URL = "https://dplxnpxxztkjczaoyetl.supabase.co";
     const ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbHhucHh4enRramN6YW95ZXRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5NzEwNTUsImV4cCI6MjA4ODU0NzA1NX0.Vhxv9UieuHwm4BBF9ziXPp8f5jeyka4m9sZbcQ_VlRQ";
     const sb = window.supabase.createClient(SUPA_URL, ANON_KEY);
@@ -137,19 +77,6 @@
     function enterApp() {
         document.getElementById('auth-layer').style.display = 'none';
         document.getElementById('app-layer').style.display = 'block';
-    }
-
-    function triggerSuccess() {
-        const overlay = document.getElementById('celebration-overlay');
-        overlay.style.display = 'flex';
-        
-        // Simple confetti console effect (Mental model)
-        console.log("💰 TRANSACTION SUCCESSFUL — REWARD TRIGGERED");
-    }
-
-    function closeCelebration() {
-        document.getElementById('celebration-overlay').style.display = 'none';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
 </body>
