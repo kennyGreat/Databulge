@@ -1372,6 +1372,28 @@ html, body {
 
           </div>
 
+          <!-- Terms & Conditions — must be ticked before signup -->
+          <div class="field" style="margin:12px 0 4px;">
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;line-height:1.4;">
+              <input type="checkbox" id="su-terms" style="
+                width:18px;height:18px;min-width:18px;margin-top:2px;
+                accent-color:#25D366;cursor:pointer;
+              "/>
+              <span style="font-size:.8rem;color:#94a3b8;">
+                I have read and agree to the
+                <a id="terms-link" href="#" onclick="openTermsModal();return false;"
+                   style="color:#6366f1;font-weight:700;text-decoration:underline;">
+                  DataBulge Terms and Conditions
+                </a>.
+                I understand this platform is for purchasing mobile data bundles and is
+                <strong style="color:#fff;">NOT</strong> an investment or savings platform.
+              </span>
+            </label>
+          </div>
+          <div id="su-terms-err" style="display:none;color:#fca5a5;font-size:.78rem;margin:4px 0 8px;padding:6px 10px;background:rgba(244,63,94,.1);border-radius:6px;">
+            ⚠️ You must agree to the Terms and Conditions to create an account.
+          </div>
+
           <button class="btn btn-primary btn-full" id="su-btn" onclick="doSignup()">Create an Account</button>
           <div class="db-divider">or</div>
 
@@ -1538,9 +1560,11 @@ html, body {
       <div class="fbar" id="prov-bar"></div>
       <div class="fbar" id="cat-bar">
         <button class="fb on" onclick="setCat(this,'All')">All Types</button>
-        <button class="fb" onclick="setCat(this,'daily')">Daily</button>
         <button class="fb" onclick="setCat(this,'weekly')">Weekly</button>
         <button class="fb" onclick="setCat(this,'monthly')">Monthly</button>
+        <button class="fb" onclick="setCat(this,'mega')">Mega</button>
+        <button class="fb" onclick="setCat(this,'always_on')">Always On</button>
+        <button class="fb" onclick="setCat(this,'router')">Router</button>
       </div>
       <div class="plans-grid" id="plans-grid"><div class="lc"><div class="spin"></div></div></div>
     </div>
@@ -1597,10 +1621,217 @@ html, body {
         <label>Phone Number for Data Delivery</label>
         <input type="tel" id="m-sub-phone" placeholder="e.g. 08012345678"/>
       </div>
+      <div class="field" style="margin:0 0 4px;">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer;margin:0;">
+          <div id="autorenew-toggle" onclick="toggleAutoRenew()"
+            style="width:44px;height:24px;border-radius:12px;background:#334155;
+                   position:relative;cursor:pointer;transition:background .2s;flex-shrink:0;">
+            <div id="autorenew-knob"
+              style="width:20px;height:20px;border-radius:50%;background:#fff;
+                     position:absolute;top:2px;left:2px;transition:transform .2s;"></div>
+          </div>
+          <span style="font-size:.88rem;color:var(--text2);">
+            🔄 <strong style="color:#fff;">Auto-renew</strong> — never run out of data
+          </span>
+        </label>
+        <div id="autorenew-hint" style="font-size:.75rem;color:#94a3b8;margin-top:5px;margin-left:54px;display:none;">
+          When your plan completes, it renews automatically on the same cycle. You can turn this off anytime.
+        </div>
+      </div>
       <div class="modal-acts">
         <button class="btn btn-outline" onclick="closeM('m-sub')">Cancel</button>
         <button class="btn btn-primary" id="m-sub-btn" onclick="confirmSub()">Subscribe Now</button>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── TERMS & CONDITIONS MODAL ─────────────────────────────── -->
+<div class="overlay" id="m-terms" style="z-index:9999;">
+  <div class="modal" style="max-height:85vh;display:flex;flex-direction:column;padding:0;overflow:hidden;">
+    <div style="padding:18px 20px 14px;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0;">
+      <h2 style="margin:0;font-size:1.1rem;">DataBulge Terms &amp; Conditions</h2>
+      <p style="margin:4px 0 0;font-size:.78rem;color:#94a3b8;">Vortexedge Limited · RC 9193139 · Version 1.0</p>
+    </div>
+    <div style="overflow-y:auto;flex:1;padding:16px 20px;font-size:.82rem;color:#cbd5e1;line-height:1.7;" id="terms-body">
+      <p style="background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.3);border-radius:8px;padding:10px 12px;color:#fca5a5;font-weight:600;margin:0 0 14px;">
+        ⚠️ IMPORTANT — Please read carefully before creating your account. By ticking the checkbox and creating an account, you confirm that you have read, understood, and agree to be legally bound by these Terms and Conditions.
+      </p>
+<p style="margin:6px 0;">DATABULGE</p>
+<p style="margin:6px 0;">Terms and Conditions of Service</p>
+<p style="margin:6px 0;">Operated by Vortexedge Limited — RC No. 9193139</p>
+<p style="margin:6px 0;">Effective Date: January 9, 2026 | Version 1.0</p>
+<p style="margin:6px 0;">www.databulge.com</p>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">1.  PARTIES TO THIS AGREEMENT</h3>
+<p style="margin:6px 0;">These Terms and Conditions ("Agreement") constitute a legally binding contract between:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">Vortexedge Limited, a company duly incorporated under the laws of the Federal Republic of Nigeria, with RC Number 9193139, incorporated on January 9, 2026 (hereinafter "DataBulge", "Company", "We", "Us", or "Our"); and</li>
+<li style="margin:3px 0 3px 8px;">You, the individual registering for or using the DataBulge platform (hereinafter "User", "You", or "Your").</li>
+</ul>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">2.  WHAT DATABULGE IS AND IS NOT</h3>
+<h4 style="color:#a5b4fc;font-size:.85rem;margin:12px 0 4px;">2.1  What DataBulge Is</h4>
+<p style="margin:6px 0;">DataBulge is a technology platform that enables users to purchase mobile internet data bundles from Nigerian telecommunications networks (currently MTN, Airtel, Glo, and T2) using a structured installment-based payment system. The platform allows you to:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">Select a data plan of your choice</li>
+<li style="margin:3px 0 3px 8px;">Fund your personal wallet in flexible amounts at any time</li>
+<li style="margin:3px 0 3px 8px;">Have your data bundle automatically activated and delivered to your phone number once your wallet balance equals the full cost of your selected plan</li>
+</ul>
+<p style="margin:6px 0;">DataBulge is a technology and telecom services platform. All payments are strictly for the pre-purchase and reservation of mobile data services on your behalf.</p>
+<h4 style="color:#a5b4fc;font-size:.85rem;margin:12px 0 4px;">2.2  What DataBulge Is NOT</h4>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">3.  ELIGIBILITY</h3>
+<p style="margin:6px 0;">To use DataBulge you must:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">Be at least 18 years of age, or have the consent of a parent or legal guardian</li>
+<li style="margin:3px 0 3px 8px;">Be a resident or legal user of mobile telecommunications services in Nigeria</li>
+<li style="margin:3px 0 3px 8px;">Provide accurate, complete, and current information during registration</li>
+<li style="margin:3px 0 3px 8px;">Have a valid Nigerian mobile phone number for data delivery</li>
+<li style="margin:3px 0 3px 8px;">Have access to a valid payment method,</li>
+</ul>
+<p style="margin:6px 0;">By registering, you warrant that all information you provide is truthful, accurate, and not misleading. DataBulge reserves the right to suspend or terminate accounts where false information is detected or for reasons not disclosed to you.</p>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">4.  ACCOUNT REGISTRATION AND SECURITY</h3>
+<p style="margin:6px 0;">When you register on DataBulge, you agree to:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">Create only one (1) account per person</li>
+<li style="margin:3px 0 3px 8px;">Provide a valid email address and a secure password</li>
+<li style="margin:3px 0 3px 8px;">Keep your login credentials confidential and not share them with any third party</li>
+<li style="margin:3px 0 3px 8px;">Notify us immediately through our email or our legal channels if you suspect unauthorized access to your account</li>
+</ul>
+<p style="margin:6px 0;">You are solely responsible for all activity that occurs under your account. DataBulge will not be liable for any loss or damage arising from your failure to maintain the confidentiality of your account credentials.</p>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">5.  HOW THE DATABULGE SERVICE WORKS</h3>
+<h4 style="color:#a5b4fc;font-size:.85rem;margin:12px 0 4px;">5.1  Selecting a Data Plan</h4>
+<p style="margin:6px 0;">You browse available data plans on the platform, which display the data size (e.g., 500MB, 1GB, 5GB), the applicable network (MTN, Airtel, Glo, T2 and any other displayed on our platform), the validity period, the total cost, and the installment fee (surcharge) applicable to your chosen payment period.</p>
+<h4 style="color:#a5b4fc;font-size:.85rem;margin:12px 0 4px;">5.2  Installment Payment Structure</h4>
+<p style="margin:6px 0;">Upon subscribing to a plan, you choose a payment period:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">7-Day Payment Plan: A 5% surcharge is applied to the market price. Your total cost is divided into daily installments over 7 days.</li>
+<li style="margin:3px 0 3px 8px;">28-Day Payment Plan: A 10% surcharge is applied to the market price. Your total cost is divided into daily installments over 28 days.</li>
+</ul>
+<p style="margin:6px 0;">The surcharge represents our service fee for extending the installment facility to you. It is non-refundable once a subscription is created.</p>
+<h4 style="color:#a5b4fc;font-size:.85rem;margin:12px 0 4px;">5.3  Wallet Funding</h4>
+<p style="margin:6px 0;">Each user maintains a personal wallet ledger on DataBulge. You fund your wallet via bank transfer or any other fund transfer we approve to your dedicated virtual account number. Funds credited to your wallet are:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">Held in your individual wallet ledger</li>
+<li style="margin:3px 0 3px 8px;">Not pooled with other users’ funds</li>
+<li style="margin:3px 0 3px 8px;">Not invested, lent, or used for any purpose other than purchasing your selected data bundle</li>
+<li style="margin:3px 0 3px 8px;">Automatically applied toward your active subscription the moment they arrive</li>
+</ul>
+<h4 style="color:#a5b4fc;font-size:.85rem;margin:12px 0 4px;">5.4  Data Delivery</h4>
+<p style="margin:6px 0;">Once your wallet has accumulated the full payment for your selected plan, the system automatically:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">Purchases the data bundle from the relevant telecommunications vendor</li>
+<li style="margin:3px 0 3px 8px;">Delivers it to the mobile phone number you provided at subscription</li>
+<li style="margin:3px 0 3px 8px;">Sends you an in-app and push notification confirming delivery</li>
+</ul>
+<p style="margin:6px 0;">Critical Rule: No data bundle, partial data, or any benefit will be delivered or provided until full payment of the selected plan is completed. There is no partial service delivery under any circumstances.</p>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">6.  REFUND AND AUTO-REFUND POLICY</h3>
+<h4 style="color:#a5b4fc;font-size:.85rem;margin:12px 0 4px;">6.1  Automatic Refund</h4>
+<p style="margin:6px 0;">If a data delivery fails after your full payment is received, the system is designed to automatically refund the deducted amount to your DataBulge wallet within a maximum of seven (7) days of the failure being detected. The following conditions trigger an automatic refund:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">Both primary and secondary data delivery providers fail to complete the transaction</li>
+<li style="margin:3px 0 3px 8px;">The delivery job remains unprocessed beyond the 2-minute processing window</li>
+<li style="margin:3px 0 3px 8px;">The delivery job is stuck in processing for more than 5 minutes (crash recovery)</li>
+<li style="margin:3px 0 3px 8px;">A delivery confirmation is not received within the allotted processing window</li>
+</ul>
+<p style="margin:6px 0;">All refunds are credited to your DataBulge wallet and are available for use toward a new subscription immediately. A notification and an inbox message will be sent to you confirming the refund, including the reference number and your updated wallet balance.</p>
+<h4 style="color:#a5b4fc;font-size:.85rem;margin:12px 0 4px;">6.2  Non-Refundable Amounts</h4>
+<p style="margin:6px 0;">The following are non-refundable under any circumstances:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">Installment surcharges (service fees) once a subscription has been created</li>
+<li style="margin:3px 0 3px 8px;">Successfully delivered data bundles — once a data bundle has been delivered to your phone number, no refund will be issued regardless of whether the data was used</li>
+<li style="margin:3px 0 3px 8px;">Funds voluntarily transferred to your wallet in error</li>
+</ul>
+<h4 style="color:#a5b4fc;font-size:.85rem;margin:12px 0 4px;">6.3  Refund to Original Payment Source</h4>
+<p style="margin:6px 0;">DataBulge does not process refunds back to your bank account, debit card, or any external payment instrument. All refunds are credited exclusively to your DataBulge wallet for the purpose of data purchases on our platform.</p>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">7.  FEES AND PRICING</h3>
+<p style="margin:6px 0;">DataBulge earns revenue from the difference between the wholesale cost of data bundles purchased from telecommunications vendors and the price charged to users, inclusive of the installment surcharge. By using this platform, you acknowledge and agree that:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">All prices displayed on the platform include our service margin</li>
+<li style="margin:3px 0 3px 8px;">The installment surcharge (5% for 7-day plans, 10% for 28-day plans) is a service fee for the installment facility and is not a form of interest or financial yield</li>
+<li style="margin:3px 0 3px 8px;">Prices may be updated from time to time; updated prices will be displayed on the platform before you complete a new subscription</li>
+<li style="margin:3px 0 3px 8px;">You will always see the full total cost of a plan before committing to a subscription</li>
+</ul>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">8.  KNOW YOUR CUSTOMER (KYC) VERIFICATION</h3>
+<p style="margin:6px 0;">In compliance with applicable Nigerian regulations and responsible platform operation, DataBulge requires KYC verification for users whose wallet balance exceeds ₦10,000 (Ten Thousand Naira) or who subscribe to plans priced above ₦10,000. You may be required to provide:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">Your Bank Verification Number (BVN)</li>
+<li style="margin:3px 0 3px 8px;">Your National Identification Number (NIN)</li>
+<li style="margin:3px 0 3px 8px;">Your residential address</li>
+<li style="margin:3px 0 3px 8px;">Any additional information required for identity verification</li>
+</ul>
+<p style="margin:6px 0;">KYC information is collected solely for identity verification and fraud prevention purposes. It will not be shared with third parties except as required by law or as necessary to verify your identity with authorised verification services.</p>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">9.  ACCEPTABLE USE POLICY</h3>
+<p style="margin:6px 0;">You agree that you will not use DataBulge to:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">Fund your wallet with proceeds of fraud, money laundering, or any illegal activity</li>
+<li style="margin:3px 0 3px 8px;">Create multiple accounts to circumvent limits or policies</li>
+<li style="margin:3px 0 3px 8px;">Attempt to reverse-engineer, hack, or disrupt the platform or its backend systems</li>
+<li style="margin:3px 0 3px 8px;">Submit false or fraudulent subscription requests</li>
+<li style="margin:3px 0 3px 8px;">Use the platform in any manner that violates applicable Nigerian law, including the Cybercrimes (Prohibition, Prevention, etc.) Act 2015</li>
+<li style="margin:3px 0 3px 8px;">Attempt to manipulate the refund system or delivery system for personal gain</li>
+</ul>
+<p style="margin:6px 0;">DataBulge employs automated fraud detection. Accounts suspected of fraudulent activity will be immediately suspended and referred to relevant law enforcement authorities. All funds in suspended accounts will be frozen pending investigation.</p>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">10.  PRIVACY AND DATA PROTECTION</h3>
+<p style="margin:6px 0;">By using DataBulge, you consent to the collection, processing, and storage of your personal data in accordance with our Privacy Policy, which forms part of this Agreement. In summary:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">We collect your name, email address, phone number, wallet transaction history, and KYC information where applicable</li>
+<li style="margin:3px 0 3px 8px;">Your data is stored on secure servers with encryption at rest and in transit</li>
+<li style="margin:3px 0 3px 8px;">We do not sell, rent, or share your personal data with third parties for marketing purposes</li>
+<li style="margin:3px 0 3px 8px;">Payment processing is handled by our financial partners, and is subject to their own privacy policy</li>
+<li style="margin:3px 0 3px 8px;">We may share your data with law enforcement, regulatory authorities, or our telecommunications vendors to the extent necessary to provide the service or comply with legal obligations</li>
+</ul>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">11.  THIRD-PARTY SERVICE PROVIDERS</h3>
+<p style="margin:6px 0;">DataBulge relies on the following third-party providers to deliver the following services:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">Payment processing and virtual account management</li>
+<li style="margin:3px 0 3px 8px;">Payment infrastructure</li>
+<li style="margin:3px 0 3px 8px;">Data bundle fulfilment and delivery to telecommunications networks</li>
+<li style="margin:3px 0 3px 8px;">Backend infrastructure, database, and authentication</li>
+<li style="margin:3px 0 3px 8px;">And other third-party services</li>
+</ul>
+<p style="margin:6px 0;">DataBulge is not responsible for the downtime, errors, or service failures of any third-party provider. Where a failure by a third-party provider results in non-delivery of your data bundle, the automatic refund policy in Section 6 applies.</p>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">12.  LIMITATION OF LIABILITY</h3>
+<p style="margin:6px 0;">To the maximum extent permitted by applicable Nigerian law:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">DataBulge’s total liability to you for any claim arising under or in connection with these Terms shall not exceed the total amount paid by you to DataBulge in the 30 days preceding the event giving rise to the claim</li>
+<li style="margin:3px 0 3px 8px;">DataBulge shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of data, loss of revenue, or loss of profit</li>
+<li style="margin:3px 0 3px 8px;">DataBulge shall not be liable for delays or failures in service caused by force majeure events including but not limited to acts of God, government actions, telecommunications network outages, or failures of third-party providers</li>
+<li style="margin:3px 0 3px 8px;">DataBulge does not guarantee uninterrupted or error-free access to the platform</li>
+</ul>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">13.  INTELLECTUAL PROPERTY</h3>
+<p style="margin:6px 0;">All content, branding, software, trade names, logos, and platform features associated with DataBulge are the exclusive intellectual property of Vortexedge Limited. You are granted a limited, non-exclusive, non-transferable licence to use the platform solely for the purpose of purchasing data bundles as described in these Terms. You may not copy, reproduce, distribute, or create derivative works from any DataBulge materials without our prior written consent.</p>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">14.  ACCOUNT SUSPENSION AND TERMINATION</h3>
+<p style="margin:6px 0;">DataBulge reserves the right to suspend or permanently terminate your account, without prior notice, if we determine that:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">You have violated any provision of these Terms</li>
+<li style="margin:3px 0 3px 8px;">You have engaged in fraudulent, deceptive, or illegal activity on the platform</li>
+<li style="margin:3px 0 3px 8px;">Your account has been inactive for more than 24 consecutive months</li>
+<li style="margin:3px 0 3px 8px;">We are required to do so by applicable law or a competent authority</li>
+</ul>
+<p style="margin:6px 0;">Upon termination, any active subscriptions will be cancelled. Wallet balances at the time of termination for accounts closed for reasons other than fraud will be subject to a refund review process. Contact support@databulge.com within 30 days of termination to initiate a balance recovery request.</p>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">15.  AMENDMENTS TO THESE TERMS</h3>
+<p style="margin:6px 0;">DataBulge reserves the right to update these Terms and Conditions at any time. When we make material changes, we will:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">Display a notice on the platform at least 7 days before the changes take effect</li>
+<li style="margin:3px 0 3px 8px;">Send an email notification to your registered email address</li>
+<li style="margin:3px 0 3px 8px;">Require you to re-accept the updated Terms before continuing to use the platform</li>
+</ul>
+<p style="margin:6px 0;">Your continued use of DataBulge after the effective date of any changes constitutes your acceptance of the revised Terms. If you do not agree with the changes, you must stop using the platform and contact us to close your account.</p>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">16.  GOVERNING LAW AND DISPUTE RESOLUTION</h3>
+<p style="margin:6px 0;">These Terms and Conditions are governed by and construed in accordance with the laws of the Federal Republic of Nigeria. Any dispute, controversy, or claim arising out of or relating to these Terms shall be resolved as follows:</p>
+<ul style="padding-left:16px;margin:4px 0;">
+<li style="margin:3px 0 3px 8px;">Step 1 — Informal Resolution: You agree to first contact DataBulge at through our legal channels  and attempt to resolve the dispute informally within 30 days</li>
+<li style="margin:3px 0 3px 8px;">Step 2 — Mediation: If informal resolution fails, either party may refer the matter to a mutually agreed mediator</li>
+<li style="margin:3px 0 3px 8px;">Step 3 — Litigation: If mediation fails, disputes shall be submitted to the exclusive jurisdiction of a legitimate court of law in Nigeria</li>
+</ul>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">17.  CONTACT INFORMATION</h3>
+<p style="margin:6px 0;">For all enquiries, complaints, or support requests, contact Vortexedge Limited at:</p>
+<h3 style="color:#fff;font-size:.92rem;margin:18px 0 6px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;">18.  USER ACKNOWLEDGEMENT</h3>
+<p style="margin:6px 0;">© 2026 Vortexedge Limited. All rights reserved. DataBulge is a registered trademark of Vortexedge Limited. RC Number: 9193139. Incorporated January 9, 2026, Federal Republic of Nigeria.</p>
+    </div>
+    <div style="padding:14px 20px;border-top:1px solid rgba(255,255,255,.1);display:flex;gap:10px;flex-shrink:0;">
+      <button class="btn btn-primary" style="flex:1;" onclick="acceptTerms()">I Agree ✓</button>
+      <button class="btn btn-outline" onclick="closeM('m-terms')">Close</button>
     </div>
   </div>
 </div>
@@ -2721,6 +2952,15 @@ async function doSignup(){
   const phone=document.getElementById('su-phone').value.trim();
   const email=document.getElementById('su-email').value.trim();
   const pass=document.getElementById('su-pass').value;
+  // Enforce T&C checkbox
+  const termsBox = document.getElementById('su-terms');
+  const termsErr = document.getElementById('su-terms-err');
+  if (!termsBox || !termsBox.checked) {
+    if (termsErr) termsErr.style.display = 'block';
+    if (termsBox) termsBox.focus();
+    return;
+  }
+  if (termsErr) termsErr.style.display = 'none';
   if(!name||!email||!pass){setAuthErr('su','Name, email & password required');return;}
   if(pass.length<6){setAuthErr('su','Password must be 6+ characters');return;}
   setBtnLoad('su-btn',true);
@@ -3067,7 +3307,33 @@ function setCat(btn,c){
 // 28 days = pay over 28 days  (+10% surcharge, 28 daily payments)
 // Breakdown only shows AFTER user selects an option.
 // Plan data is delivered as soon as fully paid off.
-var selPayDays = 0; // 0 = nothing selected yet
+var selPayDays  = 0;  // 0 = nothing selected yet
+var selAutoRenew = false; // auto-renew toggle state
+
+function openTermsModal() {
+  document.getElementById('m-terms').classList.add('open');
+}
+function acceptTerms() {
+  document.getElementById('su-terms').checked = true;
+  document.getElementById('su-terms-err').style.display = 'none';
+  closeM('m-terms');
+}
+
+function toggleAutoRenew() {
+  selAutoRenew = !selAutoRenew;
+  var tog  = document.getElementById('autorenew-toggle');
+  var knob = document.getElementById('autorenew-knob');
+  var hint = document.getElementById('autorenew-hint');
+  if (selAutoRenew) {
+    tog.style.background  = '#25D366';
+    knob.style.transform  = 'translateX(20px)';
+    hint.style.display    = 'block';
+  } else {
+    tog.style.background  = '#334155';
+    knob.style.transform  = 'translateX(0)';
+    hint.style.display    = 'none';
+  }
+}
 
 function getSurchargeForDays(payDays){
   if(payDays===28) return {rate:0.10, label:'10%'};
@@ -3159,6 +3425,14 @@ function openSubModal(pid){
   document.getElementById('m-sub-details').style.display='none';
   document.getElementById('m-student-hint')?.classList.add('hide');
   document.getElementById('m-sub-phone').value=myData?.phone||me.user_metadata?.phone||'';
+  // Reset auto-renew toggle
+  selAutoRenew = false;
+  var _tog = document.getElementById('autorenew-toggle');
+  var _knob = document.getElementById('autorenew-knob');
+  var _hint = document.getElementById('autorenew-hint');
+  if (_tog)  _tog.style.background  = '#334155';
+  if (_knob) _knob.style.transform  = 'translateX(0)';
+  if (_hint) _hint.style.display    = 'none';
   document.getElementById('m-sub').classList.add('open');
 }
 async function confirmSub(){
@@ -3169,7 +3443,7 @@ async function confirmSub(){
   const res=await fetch(`${FN}/createSubscription`,{
     method:'POST',
     headers:{'Authorization':'Bearer '+(await getToken()),'Content-Type':'application/json'},
-    body:JSON.stringify({user_id:me.id,plan_id:selPlan.id,phone_number:phone,payment_days:selPayDays})
+    body:JSON.stringify({user_id:me.id,plan_id:selPlan.id,phone_number:phone,payment_days:selPayDays,auto_renew:selAutoRenew})
   });
   const data=await res.json();
   setBtnLoad('m-sub-btn',false,'Subscribe Now');
